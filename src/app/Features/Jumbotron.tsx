@@ -27,7 +27,7 @@ export default function Jumbotron() {
                         </div>
                     </div>
                     <div className="absolute bottom-0 w-full flex justify-center">
-                        <img src="/assets/img/profile.png" alt="hero" width={1024} />
+                        <img src="/static/img/profile.png" alt="hero" width={1024} />
                     </div>
                 </div>
             </div>

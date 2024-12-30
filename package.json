@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "webpack serve --config webpack.dev.ts --history-api-fallback --hot --port 3009 --open",
-    "build": "webpack --mode production",
+    "build": "webpack --config webpack.prod.ts && gzipper compress --verbose ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -56,6 +56,7 @@
     "@typescript-eslint/parser": "^5.62.0",
     "autoprefixer": "^10.4.20",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "dotenv-webpack": "^8.1.0",
@@ -71,7 +72,9 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.4.5",
     "webpack": "^5.91.0",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.0.4",
+    "webpack-merge": "^6.0.1"
   }
 }

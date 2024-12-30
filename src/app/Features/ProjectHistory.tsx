@@ -7,19 +7,19 @@ export default function ProjectHistory() {
     const listHistoryProject = [
         {
             name: 'Massive Profiling',
-            image: '/assets/img/project/massive-profiling.png'
+            image: '/static/img/project/massive-profiling.png'
         },
         {
             name: 'Open Data Sumut',
-            image: '/assets/img/project/sadaina.png'
+            image: '/static/img/project/sadaina.png'
         },
         {
             name: 'IMA',
-            image: '/assets/img/project/ima.png'
+            image: '/static/img/project/ima.png'
         },
         {
             name: 'Profiling Economy',
-            image: '/assets/img/project/economy.png'
+            image: '/static/img/project/economy.png'
         },
     ]
     return(
