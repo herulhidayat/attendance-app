@@ -24,31 +24,28 @@ module.exports = merge(common, {
   },
   module: {
     rules: [
-      {
-        test: /\.(s(a|c)ss)$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-          },
-          {
-            loader: "resolve-url-loader",
-            options: { sourceMap: false, debug: false, keepQuery: false },
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: false,
-            },
-          },
-        ],
-      },
+      // {
+      //   test: /\.(s(a|c)ss)$/,
+      //   use: [
+      //     "style-loader",
+      //     {
+      //       loader: "css-loader",
+      //     },
+      //     {
+      //       loader: "resolve-url-loader",
+      //       options: { sourceMap: false, debug: false, keepQuery: false },
+      //     },
+      //     {
+      //       loader: "sass-loader",
+      //       options: {
+      //         sourceMap: false,
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.css$/i,
-        loader: "css-loader",
-        options: {
-          import: true,
-        },
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },
