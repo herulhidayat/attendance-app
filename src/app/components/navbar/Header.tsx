@@ -1,8 +1,8 @@
-import { DFlexJustifyBetween } from "@app/styled/flex.styled"
-import { MegaMenu, Navbar } from "flowbite-react"
+import { Button, MegaMenu, Navbar } from "flowbite-react"
 import React from "react"
 import styled from "styled-components"
 import AppIcon from "../Icons/AppIcon"
+import { MenuLeftIcon, MenuRightIcon } from "../Icons/ActiveMenuIcon"
 
 export default function Header() {
     return(
@@ -13,11 +13,21 @@ export default function Header() {
                         <AppIcon />
                     </Navbar.Brand>
                     <Navbar.Collapse>
-                        <Navbar.Link className={`border-2 border-primary border-y-transparent rounded-full px-4 py-2 cursor-pointer uppercase`}>Home</Navbar.Link>
-                        <Navbar.Link className={`hover:text-primary cursor-pointer uppercase`}>Works</Navbar.Link>
+                        <Navbar.Link className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                            <ActiveMenu status={true} name="Home" />
+                        </Navbar.Link>
+                        <Navbar.Link className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                            <ActiveMenu status={false} name="Works" />  
+                        </Navbar.Link>
+                        <Navbar.Link className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                            <ActiveMenu status={false} name="Experience" />
+                        </Navbar.Link>
+                        <Navbar.Link className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                            <ActiveMenu status={false} name="Info" />
+                        </Navbar.Link>
                     </Navbar.Collapse>
                     <div>
-                        <p>+628 123 456 789</p>
+                        <Button pill size={"sm"}>Contact Me</Button>
                     </div>
                 </div>
             </div>
@@ -25,7 +35,22 @@ export default function Header() {
     )
 }
 
+const ActiveMenu = ({status, name}: {status: boolean, name: string}) => {
+    if(status){
+        return(
+            <div className="flex items-center text-primary gap-3">
+                <MenuLeftIcon />
+                {name}
+                <MenuRightIcon />
+            </div>
+        )
+    } else {
+        return name
+    }
+}
+
 const HeaderMenu = styled(MegaMenu)`
+    background-color: transparent;
     .menu-nav{
         &.active{
             border-radius: 50%;
