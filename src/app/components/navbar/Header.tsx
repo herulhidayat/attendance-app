@@ -1,35 +1,45 @@
 import { Button, MegaMenu, Navbar } from "flowbite-react"
-import React from "react"
+import React, { useMemo } from "react"
 import styled from "styled-components"
 import AppIcon from "../Icons/AppIcon"
 import { MenuLeftIcon, MenuRightIcon } from "../Icons/ActiveMenuIcon"
 
-export default function Header() {
+interface IHeader {
+    className?: string
+    navState?: string
+}
+export default function Header({ className="py-8", navState }: IHeader) {
+    const renderNav = useMemo(() => {
+        console.log(navState)
+        return(
+            <div className={`flex flex-wrap items-center justify-between md:space-x-8 transition-all duration-300 ${className}`}>
+                <Navbar.Brand className="text-primary">
+                    <AppIcon />
+                </Navbar.Brand>
+                <Navbar.Collapse>
+                    <Navbar.Link href="#" className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                        <ActiveMenu status={navState === ""} name="Home" />
+                    </Navbar.Link>
+                    <Navbar.Link href="#works" className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                        <ActiveMenu status={navState === "works"} name="Works" />  
+                    </Navbar.Link>
+                    <Navbar.Link href="#experiences" className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                        <ActiveMenu status={navState === "experiences"} name="Experience" />
+                    </Navbar.Link>
+                    <Navbar.Link href="#info" className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                        <ActiveMenu status={navState === "info"} name="Info" />
+                    </Navbar.Link>
+                </Navbar.Collapse>
+                <div>
+                    <Button pill size={"sm"}>Contact Me</Button>
+                </div>
+            </div>
+        )
+    }, [navState, className])
     return(
         <HeaderMenu>
             <div className="container mx-auto">
-                <div className="flex flex-wrap items-center justify-between py-8 md:space-x-8">
-                    <Navbar.Brand className="text-primary">
-                        <AppIcon />
-                    </Navbar.Brand>
-                    <Navbar.Collapse>
-                        <Navbar.Link className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
-                            <ActiveMenu status={true} name="Home" />
-                        </Navbar.Link>
-                        <Navbar.Link className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
-                            <ActiveMenu status={false} name="Works" />  
-                        </Navbar.Link>
-                        <Navbar.Link className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
-                            <ActiveMenu status={false} name="Experience" />
-                        </Navbar.Link>
-                        <Navbar.Link className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
-                            <ActiveMenu status={false} name="Info" />
-                        </Navbar.Link>
-                    </Navbar.Collapse>
-                    <div>
-                        <Button pill size={"sm"}>Contact Me</Button>
-                    </div>
-                </div>
+                {renderNav}
             </div>
         </HeaderMenu>
     )
