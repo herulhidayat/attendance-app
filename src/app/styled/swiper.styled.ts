@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { Swiper } from "swiper/react";
 
-export const SwiperCustom = styled(Swiper)`
+export const SwiperCustom = styled(Swiper)<{ widthRef?: string }>`
+  width: ${(props) => props.widthRef};
+
   &.swiper_container {
     /* height: 52rem; */
     padding: 2rem 0;

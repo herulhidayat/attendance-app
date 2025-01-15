@@ -23,16 +23,15 @@ export default function ProjectHistory() {
         },
     ]
     return(
-      <div className="container mx-auto">
+      <div className="container mx-auto px-5">
         <div className="flex flex-col gap-8 items-center">
             <h2 className="text-12 font-bold text-center" style={{maxWidth: "41.21428rem", lineHeight: "4.28571rem"}}>Projects that have been worked on</h2>
             <p className="text-8 text-center" style={{maxWidth: "65rem", lineHeight: "1.71429rem"}}>We have successfully developed a wide range of websites, whether working independently or as part of large, collaborative teams, consistently delivering high-quality, scalable, and user-friendly solutions that meet client requirements and exceed expectations.</p>
             <div className="w-full px-5">
                 <SwiperCustom
                     spaceBetween={10}
-                    slidesPerView={3}
                     breakpoints={{
-                        640: {
+                        540: {
                           slidesPerView: 2,
                         },
                         768: {

@@ -38,7 +38,7 @@ export default function HomePage() {
   return(
     <>
       <section className={`sticky top-0 w-full z-50 ${navbarBlur ? "backdrop-blur-md" : "bg-[#F5F5F5]"}`}>
-        <Header className={navbarBlur ? "py-2" : "py-8"} navState={navState}/>
+        <Header className={navbarBlur ? "py-2" : "lg:py-8 py-2"} navState={navState}/>
       </section>
       <section className='bg-[#F5F5F5] rounded-b-[4.28571rem] pb-[4.64286rem]'>
         <Jumbotron />

@@ -38,7 +38,7 @@ export default function Header({ className="py-8", navState }: IHeader) {
     }, [navState, className])
     return(
         <HeaderMenu>
-            <div className="container mx-auto">
+            <div className="container mx-auto px-5">
                 {renderNav}
             </div>
         </HeaderMenu>
