@@ -2,10 +2,9 @@ name = "web-portofolio"
 
 [build]
 command = "npm install --force && npm run build"
-upload.format = "service-worker"
 
-[site]
-bucket = "./build"
+[pages]
+pages_build_output_dir = "./build"
 
 [build.environment]
 NODE_VERSION = "20.10.0"
@@ -15,8 +14,3 @@ NPM_FLAGS = "--force"
 from = "/*"
 to = "/index.html"
 status = 200
-
-[env.production]
-bucket = "./build"
-route = "yourdomain.com/*"
-zone_id = "your-zone-id"
