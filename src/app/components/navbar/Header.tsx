@@ -55,7 +55,9 @@ const ActiveMenu = ({status, name}: {status: boolean, name: string}) => {
             </div>
         )
     } else {
-        return name
+        return (
+            <>{name}</>
+        )
     }
 }
 
