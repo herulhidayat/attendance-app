@@ -109,3 +109,7 @@
   .swiper-pagination .swiper-pagination-bullet-active {
     background: var(--primary);
   }
+
+  .swiper {
+    --swiper-navigation-size: 1rem;
+  }  

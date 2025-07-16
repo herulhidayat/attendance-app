@@ -5,11 +5,15 @@ import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+import RootProvider from "@app/RootProvider";
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as any
 );
 root.render(
+  <RootProvider>
     <App />
+  </RootProvider>
 );
 
 // If you want your app to work offline and load faster, you can change

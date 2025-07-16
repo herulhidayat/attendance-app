@@ -3,41 +3,46 @@ import React, { useMemo } from "react"
 import styled from "styled-components"
 import AppIcon from "../Icons/AppIcon"
 import { MenuLeftIcon, MenuRightIcon } from "../Icons/ActiveMenuIcon"
+import NotificationIcon from "../Icons/NotificationIcon"
+import { useLocation, useNavigate } from "react-router-dom"
+import { get } from "lodash"
 
 interface IHeader {
     className?: string
-    navState?: string
 }
-export default function Header({ className="py-8", navState }: IHeader) {
+export default function Header({ className }: IHeader) {
+    const location = useLocation();
+    const getLocation = location.pathname;
+    const navigate = useNavigate()
+
     const renderNav = useMemo(() => {
-        console.log(navState)
         return(
             <div className={`flex flex-wrap items-center justify-between md:space-x-8 transition-all duration-300 ${className}`}>
                 <Navbar.Brand className="text-primary">
-                    <AppIcon />
+                    <img src="/static/logo.png" alt="logo" width={100} />
                 </Navbar.Brand>
                 <Navbar.Collapse>
-                    <Navbar.Link href="#" className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
-                        <ActiveMenu status={navState === ""} name="Home" />
+                    <Navbar.Link href="/home" className={`text-muted hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                        <ActiveMenu status={getLocation === "/home"} name="Home" />
                     </Navbar.Link>
-                    <Navbar.Link href="#works" className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
-                        <ActiveMenu status={navState === "works"} name="Works" />  
+                    <Navbar.Link href="/attendance" className={`text-muted hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                        <ActiveMenu status={getLocation === "/attendance"} name="Attendance" />  
                     </Navbar.Link>
-                    <Navbar.Link href="#experiences" className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
-                        <ActiveMenu status={navState === "experiences"} name="Experience" />
+                    <Navbar.Link href="/form" className={`text-muted hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                        <ActiveMenu status={getLocation === "/form"} name="Form" />
                     </Navbar.Link>
-                    <Navbar.Link href="#info" className={`text-secondary hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
-                        <ActiveMenu status={navState === "info"} name="Info" />
+                    <Navbar.Link href="/setting" className={`text-muted hover:text-primary cursor-pointer uppercase font-bold flex items-center`}>
+                        <ActiveMenu status={getLocation === "/setting"} name="Setting" />
                     </Navbar.Link>
                 </Navbar.Collapse>
-                <div>
-                    <Button pill size={"sm"}>Contact Me</Button>
+                <div onClick={() => {navigate('/notification')}}>
+                    <NotificationIcon />
                 </div>
             </div>
         )
-    }, [navState, className])
+    }, [className])
     return(
-        <HeaderMenu>
+        <HeaderMenu className="px-0 py-5">
             <div className="container mx-auto px-5">
                 {renderNav}
             </div>

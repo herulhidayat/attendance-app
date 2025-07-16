@@ -1,68 +1,62 @@
-import Header from '@app/components/navbar/Header';
-import AboutMe from '@app/Features/AboutMe';
-import Experienced from '@app/Features/Experienced';
-import Jumbotron from '@app/Features/Jumbotron';
-import ProjectHistory from '@app/Features/ProjectHistory';
-import Tools from '@app/Features/Tools';
-import { DFlex, DFlexJustifyCenter } from '@app/styled/flex.styled';
-import React, { useEffect, useState } from 'react';
+import NineClockIcon from "@app/components/Icons/NineClockIcon";
+import SixClockIcon from "@app/components/Icons/SixClockIcon";
+import AttendanceStatusFeature from "@app/Features/AttendanceStatusFeature";
+import NewsFeature from "@app/Features/NewsFeature";
+import OnlineListFeature from "@app/Features/OnlineListFeature";
+import { DFlex, DFlexColumn, DFlexJustifyBetween } from "@app/styled/flex.styled";
+import { Title } from "@app/styled/typography.styled";
+import { Card } from "flowbite-react";
+import React from "react";
+
 export default function HomePage() {
-  const [navbarBlur, setNavbarBlur] = useState<boolean>(false)
-  const [navState, setNavState] = useState<string>("")
-
-  const handleScroll = () => {
-    const newScrollYPosition = window.scrollY;
-    if(newScrollYPosition > 30) {
-      setNavbarBlur(true)
-    } else {
-      setNavbarBlur(false)
-    }
-    
-    if(newScrollYPosition >= 1030 && newScrollYPosition < 1670) {
-      setNavState("works")
-    } else if(newScrollYPosition >= 1670 && newScrollYPosition < 1922) {
-      setNavState("experiences")
-    } else if(newScrollYPosition >= 1922) {
-      setNavState("info")
-    } else {
-      setNavState("")
-    }
-};
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-  }, [])
   return(
     <>
-      <section className={`sticky top-0 w-full z-50 ${navbarBlur ? "backdrop-blur-md" : "bg-[#F5F5F5]"}`}>
-        <Header className={navbarBlur ? "py-2" : "lg:py-8 py-2"} navState={navState}/>
-      </section>
-      <section className='bg-[#F5F5F5] rounded-b-[4.28571rem] pb-[4.64286rem]'>
-        <Jumbotron />
-      </section>
-      <section className='bg-[#F5F5F5]'>
-        <div className='flex justify-center bg-white rounded-b-[4.28571rem] py-[4.64286rem]'>
-          <Tools />
+      <div className="container mx-auto px-5">
+        <h3 className="mb-3 text-5 font-semibold">Hi, Good Morning!</h3>
+      </div>
+
+      <section className="mb-3 container mx-auto px-5">
+        <div className="p-4 rounded-xl bg-gradient-to-r from-cyan-500 to-pink-600 text-white shadow-lg">
+          <DFlexColumn>
+            <div className="flex justify-between w-full">
+              <div className="flex items-start gap-3">
+                <img src="/static/img/avatar.png" alt="face" className="rounded-full" width={50}/>
+                <DFlexColumn style={{gap: 0}}>
+                  <p className="font-bold text-5">Khairul Hidayat</p>
+                  <p className="text-4 italic">Frontend</p>
+                </DFlexColumn>
+              </div>
+              <div className="flex flex-col items-end">
+                <p className="text-4 italic">Member since</p>
+                <p className="font-bold text-5">1 Juni 2021</p>
+              </div>
+            </div>
+            <div className="flex justify-between w-full items-end">
+              <div className="flex flex-col">
+                <p className="text-4">Location</p>
+                <p className="font-bold text-5">Kantor Sahid</p>
+              </div>
+              <p className="text-5 italic">ICO</p>
+            </div>
+          </DFlexColumn>
         </div>
       </section>
-      <section id="works" className='bg-[#F5F5F5] rounded-b-[4.28571rem] py-[4.64286rem]'>
-        <ProjectHistory />
+
+      <section className="mb-3 container mx-auto px-5">
+        <Title className="mb-3">{"Today\'s activity"}</Title>
+        <AttendanceStatusFeature />
       </section>
-      <section id="experiences" className='bg-[#F5F5F5]'>
-        <div className='flex justify-center bg-white rounded-b-[4.28571rem] py-[4.64286rem]'>
-          <Experienced />
+
+      <section className="mb-3">
+        <div className="container mx-auto px-5">
+          <Title>{"PCS News"}</Title>
         </div>
+        <NewsFeature />
       </section>
-      <section id="info" className='bg-[#F5F5F5] rounded-b-[4.28571rem] py-[4.64286rem]'>
-        <AboutMe />
-      </section>
-      <section className='bg-white'>
-        <DFlexJustifyCenter className='py-9'>
-          <p className='text-center text-slate-400'>© 2025 Khairul Hidayat</p>
-        </DFlexJustifyCenter>
+
+      <section className="mb-3 container mx-auto px-5">
+        <Title className="mb-3">{"Online"}</Title>
+        <OnlineListFeature />
       </section>
     </>
   )
