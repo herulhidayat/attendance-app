@@ -65,7 +65,6 @@ export default function OnlineListFeature() {
 }
 
 const Wrapper = styled.div`
-  z-index:1;
   .badge-plus {
     width: 40px;
     height: 40px;

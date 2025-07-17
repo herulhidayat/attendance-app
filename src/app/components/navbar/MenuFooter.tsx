@@ -16,7 +16,7 @@ export default function MenuFooter({ className }: IActiveMenu) {
     const getLocation = location.pathname;
     return(
         <>
-            <div className="w-full py-5 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+            <div className="w-full py-5 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] bg-white">
                 <div className={`container mx-auto px-5 w-full md:space-x-8 transition-all duration-300 ${className}`}>
                     <DFlexJustifyBetween className="w-full">
                         <NavLink to="/home" className={`text-muted w-full hover:text-primary cursor-pointer font-bold text-4 flex items-center`}>
