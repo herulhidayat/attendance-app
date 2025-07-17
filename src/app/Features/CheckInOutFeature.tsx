@@ -36,7 +36,7 @@ export default function CheckInOutFeature() {
             dispatch(setClockOut(null))
         }
 
-        if(clockIn && !clockOut) {
+        if(clockIn && (!clockOut || clockOut == 'null')) {
             setIsCheckIn(true);
         }
     }, [])

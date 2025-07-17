@@ -11,7 +11,7 @@ export default function AttendanceStatusFeature() {
 
     useEffect(() => {
         let interval: NodeJS.Timeout | undefined;
-        if (clockIn) {
+        if ((clockIn && clockIn !== 'null')) {
             interval = setInterval(() => {
                 if(timeCount) {
                     setTimeCount(timeCount + 1);
@@ -20,9 +20,12 @@ export default function AttendanceStatusFeature() {
                 }
             }, 1000);
         }
-        if (clockOut) {
+        
+        if ((clockIn && clockIn !== 'null') && (clockOut && clockOut !== 'null')) {
             clearInterval(interval);
+            setTimeCount((clockOut - clockIn) / 1000);
         }
+
     }, [clockIn, clockOut, timeCount]);
 
     const renderWorkingTime = useMemo(() => {
@@ -62,7 +65,7 @@ export default function AttendanceStatusFeature() {
               <SixClockIcon/>
             </div>
             <div className="flex flex-col gap-1 justify-center items-center">
-              <p className="font-bold text-5">{clockOut ? moment(clockOut).format('HH:mm') : "--:--"}</p>
+              <p className="font-bold text-5">{(clockOut && clockOut !== 'null') ? moment(clockOut).format('HH:mm') : "--:--"}</p>
               <p className="text-4">Check Out</p>
             </div>
           </div>
